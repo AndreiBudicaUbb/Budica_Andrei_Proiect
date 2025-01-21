@@ -1,7 +1,12 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Budica_Andrei_Proiect.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<Budica_Andrei_ProiectContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Budica_Andrei_ProiectContext") ?? throw new InvalidOperationException("Connection string 'Budica_Andrei_ProiectContext' not found.")));
 
 var app = builder.Build();
 
