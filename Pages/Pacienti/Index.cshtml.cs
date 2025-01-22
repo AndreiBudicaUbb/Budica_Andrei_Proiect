@@ -21,9 +21,29 @@ namespace Budica_Andrei_Proiect.Pages.Pacienti
 
         public IList<Pacient> Pacient { get;set; } = default!;
 
+        [BindProperty(SupportsGet = true)]
+        public string? SearchString { get; set; }
+
         public async Task OnGetAsync()
         {
-            Pacient = await _context.Pacient.ToListAsync();
+            var pacienti = from p in _context.Pacient
+                           select p;
+
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                // Convertim termenul de căutare la lowercase pentru o căutare case-insensitive
+                var searchTerm = SearchString.ToLower().Trim();
+
+                // Filtrăm pacienții
+                Pacient = await _context.Pacient
+                    .Where(p => p.Nume.ToLower().Contains(searchTerm)
+                            || p.Prenume.ToLower().Contains(searchTerm))
+                    .ToListAsync();
+            }
+            else
+            {
+                Pacient = await _context.Pacient.ToListAsync();
+            }
         }
     }
 }

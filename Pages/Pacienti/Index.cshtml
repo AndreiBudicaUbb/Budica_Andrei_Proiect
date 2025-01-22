@@ -10,6 +10,15 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<form>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Caută după nume..."
+               name="searchString" value="@Model.SearchString">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">Caută</button>
+        </div>
+    </div>
+</form>
 <table class="table">
     <thead>
         <tr>

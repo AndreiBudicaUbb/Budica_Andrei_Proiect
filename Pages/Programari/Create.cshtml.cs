@@ -21,8 +21,8 @@ namespace Budica_Andrei_Proiect.Pages.Programari
 
         public IActionResult OnGet()
         {
-        ViewData["PacientID"] = new SelectList(_context.Pacient, "ID", "CNP");
-        ViewData["TerapeutID"] = new SelectList(_context.Terapeut, "ID", "Email");
+        ViewData["PacientID"] = new SelectList(_context.Pacient.Select(p => new {p.ID,NumeComplet = p.Nume+ " " + p.Prenume}),"ID","NumeComplet");
+        ViewData["TerapeutID"] = new SelectList(_context.Terapeut, "ID", "NumeComplet");
             return Page();
         }
 
