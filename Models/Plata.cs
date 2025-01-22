@@ -31,7 +31,7 @@ namespace Budica_Andrei_Proiect.Models
 
         [Required(ErrorMessage = "Metoda de plată este obligatorie")]
         [Display(Name = "Metoda de Plată")]
-        public string MetodaPlata { get; set; }
+        public TipPlata MetodaPlata { get; set; }
 
 
         [Required(ErrorMessage = "Numărul documentului este obligatoriu")]

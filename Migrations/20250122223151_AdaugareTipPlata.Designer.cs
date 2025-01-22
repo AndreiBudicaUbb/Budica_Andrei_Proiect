@@ -4,6 +4,7 @@ using Budica_Andrei_Proiect.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Budica_Andrei_Proiect.Migrations
 {
     [DbContext(typeof(Budica_Andrei_ProiectContext))]
-    partial class Budica_Andrei_ProiectContextModelSnapshot : ModelSnapshot
+    [Migration("20250122223151_AdaugareTipPlata")]
+    partial class AdaugareTipPlata
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

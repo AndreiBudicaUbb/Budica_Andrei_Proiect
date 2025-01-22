@@ -18,7 +18,7 @@ namespace Budica_Andrei_Proiect.Models
 
         [Required(ErrorMessage = "Specializarea este obligatorie")]
         [Display(Name = "Specializare")]
-        public string Specializare { get; set; }
+        public TipSpecializare Specializare { get; set; }
 
         [Required(ErrorMessage = "Adresa de email este obligatorie")]
         [EmailAddress(ErrorMessage = "Adresa de email nu este validă")]

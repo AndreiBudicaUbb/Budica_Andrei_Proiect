@@ -1,6 +1,6 @@
 ﻿@page
 @model Budica_Andrei_Proiect.Pages.Terapeuti.EditModel
-
+@using Budica_Andrei_Proiect.Models
 @{
     ViewData["Title"] = "Edit";
 }
@@ -29,7 +29,9 @@
             <div class="form-group">
                 <span class="text-danger">*</span>
                 <label asp-for="Terapeut.Specializare" class="control-label"></label>
-                <input asp-for="Terapeut.Specializare" class="form-control" />
+                <select asp-for="Terapeut.Specializare" asp-items="Html.GetEnumSelectList<TipSpecializare>()" class="form-control">
+                    <option value="">Selectați specializarea</option>
+                </select>
                 <span asp-validation-for="Terapeut.Specializare" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -1,6 +1,6 @@
 ﻿@page
 @model Budica_Andrei_Proiect.Pages.Plati.EditModel
-
+@using Budica_Andrei_Proiect.Models
 @{
     ViewData["Title"] = "Edit";
 }
@@ -35,7 +35,10 @@
             <div class="form-group">
                 <span class="text-danger">*</span>
                 <label asp-for="Plata.MetodaPlata" class="control-label"></label>
-                <input asp-for="Plata.MetodaPlata" class="form-control" />
+                <select asp-for="Plata.MetodaPlata" asp-items="Html.GetEnumSelectList<TipPlata>()" class="form-control">
+                    <option value="">Selectați metoda de plată</option>
+                </select>
+
                 <span asp-validation-for="Plata.MetodaPlata" class="text-danger"></span>
             </div>
             <div class="form-group">
