@@ -7,7 +7,7 @@ namespace Budica_Andrei_Proiect.Models
     public class Pacient
     {
         private string cnp;
-        // Proprietăți existente
+       
         public int ID { get; set; }
 
         [Required(ErrorMessage = "Numele este obligatoriu")]
@@ -28,14 +28,14 @@ namespace Budica_Andrei_Proiect.Models
         set
         {
             cnp = value;
-            if (value?.Length == 13) // Verify we have a complete CNP
+            if (value?.Length == 13) 
             {
                 DataNasterii = ExtractDateFromCNP(value);
             }
         }
     }
 
-    // Method to extract date from CNP
+    
     private DateTime ExtractDateFromCNP(string cnp)
     {
         try
@@ -45,7 +45,7 @@ namespace Budica_Andrei_Proiect.Models
             int month = int.Parse(cnp.Substring(3, 2));
             int day = int.Parse(cnp.Substring(5, 2));
 
-            // Determine the century based on the first digit
+            
             int century = 0;
             switch (firstDigit)
             {
@@ -57,10 +57,10 @@ namespace Budica_Andrei_Proiect.Models
                 case 6:
                     century = 2000;
                     break;
-                // You can add more cases for other scenarios
+                
             }
 
-            // Combine the century with the two-digit year
+            
             year = century + year;
 
             
@@ -86,7 +86,7 @@ namespace Budica_Andrei_Proiect.Models
         [RegularExpression(@"^0[0-9]{9}$", ErrorMessage = "Numărul de telefon trebuie să înceapă cu 0 și să conțină 10 cifre")]
         public string Telefon { get; set; }
 
-        // Proprietăți noi pentru funcționalități adiționale
+        
         [Display(Name = "Observații Medicale")]
         public string? ObservatiiMedicale { get; set; }
 
@@ -94,7 +94,12 @@ namespace Budica_Andrei_Proiect.Models
         [DataType(DataType.Date)]
         public DateTime DataInregistrarii { get; set; } = DateTime.Now;
 
-        // Proprietăți de navigare pentru relații
+       
+
+        public string NumeComplet
+        {
+            get { return Nume + " " + Prenume; }
+        }
 
         public ICollection<Programare>? Programari { get; set; }
         public ICollection<Plata>? Plati { get; set; }

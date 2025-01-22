@@ -21,7 +21,7 @@ namespace Budica_Andrei_Proiect.Pages.Plati
 
         public IActionResult OnGet()
         {
-        ViewData["PacientID"] = new SelectList(_context.Pacient, "ID", "CNP");
+        ViewData["PacientID"] = new SelectList(_context.Pacient, "ID", "NumeComplet");
             return Page();
         }
 

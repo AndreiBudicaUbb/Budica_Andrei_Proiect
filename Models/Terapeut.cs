@@ -30,7 +30,6 @@ namespace Budica_Andrei_Proiect.Models
             get { return Nume + " " + Prenume; }
         }
 
-        // Proprietate de navigare pentru programări
         public ICollection<Programare>? Programari { get; set; }
     }
 }

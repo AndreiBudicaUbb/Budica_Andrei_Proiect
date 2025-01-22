@@ -29,7 +29,7 @@ namespace Budica_Andrei_Proiect.Pages.Programari
         [BindProperty]
         public Programare Programare { get; set; } = default!;
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
+        
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)

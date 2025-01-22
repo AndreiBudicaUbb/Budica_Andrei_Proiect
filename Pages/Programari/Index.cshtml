@@ -38,10 +38,10 @@
 @foreach (var item in Model.Programare) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Pacient.CNP)
+                @Html.DisplayFor(modelItem => item.Pacient.NumeComplet)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Terapeut.Email)
+                @Html.DisplayFor(modelItem => item.Terapeut.NumeComplet)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DataOra)
