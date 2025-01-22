@@ -6,7 +6,7 @@ namespace Budica_Andrei_Proiect.Models
     
     public class Pacient
     {
-        private string cnp;
+        
        
         public int ID { get; set; }
 
@@ -22,59 +22,17 @@ namespace Budica_Andrei_Proiect.Models
 
 
 
-       public string CNP 
-    { 
-        get { return cnp; }
-        set
-        {
-            cnp = value;
-            if (value?.Length == 13) 
-            {
-                DataNasterii = ExtractDateFromCNP(value);
-            }
-        }
-    }
+        [Required(ErrorMessage = "CNP-ul este obligatoriu")]
+        [StringLength(13, MinimumLength = 13, ErrorMessage = "CNP-ul trebuie să aibă exact 13 caractere")]
+        [RegularExpression(@"^[0-9]*$", ErrorMessage = "CNP-ul poate conține doar cifre")]
+        public string CNP { get; set; }
 
-    
-    private DateTime ExtractDateFromCNP(string cnp)
-    {
-        try
-        {
-            int firstDigit = int.Parse(cnp[0].ToString());
-            int year = int.Parse(cnp.Substring(1, 2));
-            int month = int.Parse(cnp.Substring(3, 2));
-            int day = int.Parse(cnp.Substring(5, 2));
 
-            
-            int century = 0;
-            switch (firstDigit)
-            {
-                case 1:
-                case 2:
-                    century = 1900;
-                    break;
-                case 5:
-                case 6:
-                    century = 2000;
-                    break;
-                
-            }
+        [Required(ErrorMessage = "Data nașterii este obligatorie")]
+        [DataType(DataType.Date)]
+        [Display(Name = "Data Nașterii")]
+        public DateTime DataNasterii { get; set; }
 
-            
-            year = century + year;
-
-            
-            return new DateTime(year, month, day);
-        }
-        catch (Exception)
-        {
-           
-            return DateTime.Now;
-        }
-    }
-
-        public DateTime DataNasterii { get; set; } = DateTime.Now;
-        
 
         [Display(Name = "Adresă")]
         [StringLength(200, ErrorMessage = "Adresa nu poate depăși 200 de caractere")]

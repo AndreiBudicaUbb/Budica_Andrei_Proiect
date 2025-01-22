@@ -17,7 +17,7 @@ namespace Budica_Andrei_Proiect.Models
 
         
         [Required(ErrorMessage = "Data plății este obligatorie")]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         [Display(Name = "Data Plății")]
         public DateTime DataPlata { get; set; } = DateTime.Now;
 

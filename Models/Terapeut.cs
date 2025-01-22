@@ -30,6 +30,7 @@ namespace Budica_Andrei_Proiect.Models
             get { return Nume + " " + Prenume; }
         }
 
+ 
         public ICollection<Programare>? Programari { get; set; }
     }
 }
